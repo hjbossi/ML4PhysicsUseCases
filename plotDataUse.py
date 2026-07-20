@@ -1,20 +1,7 @@
 #!/usr/bin/env python3
 """
 Big Data Landscape — 2026
-Style: Helvetica Neue, larger fonts, cleaned labels,
-       section titles above coloured bands,
-       bubble-area note in upper-left.
-       Y-axis extended to 100 M PB to show LHC raw data on-scale.
-       Annotation boxes repositioned to avoid axis/overlap clashes.
-       White space at top reduced — axes fill more of the figure.
-       All text sizes increased.
-       Google Web Index moved right; SKA moved down.
-       White-box annotation text at fontsize 16.
-       Netflix label moved up and right.
-       Background white.
-       LHC Grid labels repositioned for clarity.
-       Spam, YouTube, LHC Grid Streaming labels rearranged.
-
+Hannah Bossi, <hannah.bossi@cern.ch>
 Requirements:
     pip install matplotlib numpy
 """
@@ -35,7 +22,7 @@ print(f"Using font: {_font}")
 
 plt.rcParams.update({
     'font.family':    _font,
-    'font.size':       14,
+    'font.size':       16,
     'axes.linewidth':  0.8,
 })
 
@@ -57,31 +44,31 @@ DATA = [
         1.60, 54_750,
         "Netflix\n~150 M hrs/day streaming\n(1 GB/hr)  →  ~55 k PB/y",
         '#E50914',
-        2.60, 6.40,
+        1.20, 6.40,
     ),
     (
         0.55, 10_300,
         "Global E-mail\n~376 B e-mails/day  (75 KB)\n→  ~10.3 k PB/y",
         '#8E44AD',
-        1.50, 3.80,
+        1.45, 3.80,
     ),
     (
         1.10, 580,
         "Spam\n~320 B messages/day  (5 KB)\n→  ~580 PB/y",
         '#27AE60',
-        0.50, 1.80,          # <-- MOVED: shifted left and below — clear of YouTube
+        0.85, 1.80,          
     ),
     (
         2.45, 365,
         "YouTube Uploads\n~1 M hrs/day  (1 GB/hr)\n→  ~365 PB/y",
         '#CC0000',
-        2.50, 1.50,          # <-- MOVED: pulled down below the cluster of bubbles
+        2.90, 1.50,          
     ),
     (
         3.00, 800,
         "LHC Grid Data Streaming\n~80 GB/s inter-site\n→  ~800 PB/y  (2026)",
         '#003082',
-        1.60, 4.80,          # <-- MOVED: up and left — sits above the cluster, arrow points down-right to bubble
+        3.0, 4.75,         
     ),
 
     # ── STORAGE ────────────────────────────────────────────────────
@@ -89,7 +76,7 @@ DATA = [
         5.50, 1_800_000,
         "AWS S3\n~1 800 EB total stored\n(~280 T objects,  2026 est.)",
         '#FF9900',
-        6.90, 6.25,
+        5.0, 8.25,
     ),
     (
         4.15, 163,
@@ -101,19 +88,19 @@ DATA = [
         4.85, 3_260,
         "Dropbox\n~130 M new free (2 GB)\n+ 2 M new paid (1.5 TB)\n→  ~3 260 PB/y",
         '#007EE5',
-        3.70, 4.10,
+        4.2, 6.0,
     ),
     (
         6.30, 600_000,
         "Azure Blob Storage\n~600 EB total stored\n(2026 projection)",
         '#0089D6',
-        7.55, 5.35,
+        7.0, 6.6,
     ),
     (
         6.75, 2_500,
         "LHC Grid Total Stored\n~2 500 PB  (disk + tape)\nall runs,  all tiers  (2026)",
         '#1A5276',
-        5.60, 4.80,
+        6.5, 4.4,
     ),
 
     # ── PRODUCTION — HEP + ASTRONOMY ───────────────────────────────
@@ -133,25 +120,25 @@ DATA = [
         8.85, 300,
         "LHC Run 3\nReal Data\n~300 PB/y",
         '#2980B9',
-        7.70, 3.10,
+        8.2, 3.60,
     ),
     (
         9.45, 500,
         "LHC Run 3\nMonte Carlo\n~500 PB/y",
         '#4CAF50',
-        9.95, 3.90,
+        9.5, 4.50,
     ),
     (
         10.10, 1_500,
         "HL-LHC Real Data\n~1 500 PB/y\n(projected, 2029+)",
         '#1ABC9C',
-        11.10, 3.75,
+        11.10, 4.2,
     ),
     (
         10.80, 900,
         "HL-LHC Monte Carlo\n~900 PB/y\n(projected, 2029+)",
         '#2ECC71',
-        11.35, 2.35,
+        11.35, 1.5,
     ),
 
     # ── LHC RAW (no trigger) — on-scale ────────────────────────────
@@ -285,14 +272,14 @@ ax.spines[['top', 'right', 'bottom']].set_visible(False)
 # ── Y-axis label ──────────────────────────────────────────────────
 ax.set_ylabel(
     'Data Volume  (PB / year  or  total PB)',
-    fontsize  = 17,
+    fontsize  = 24,
     labelpad  = 10,
 )
 
 # ── X-axis label (black, non-italic, title-case) ─────────────────
 ax.set_xlabel(
     'Data Source Category',
-    fontsize  = 17,
+    fontsize  = 24,
     labelpad  = 10,
     color     = 'black',
     fontstyle = 'normal',
@@ -312,12 +299,12 @@ SECTIONS = [
 for label, x_data_mid, col in SECTIONS:
     x_norm = (x_data_mid - _xleft) / _xwidth
     ax.text(
-        x_norm, 1.03,
+        x_norm, 1.01,
         label,
         transform  = ax.transAxes,
         ha         = 'center',
         va         = 'bottom',
-        fontsize   = 21,
+        fontsize   = 30,
         fontweight = 'bold',
         color      = col,
         clip_on    = False,
@@ -328,7 +315,7 @@ for label, x_data_mid, col in SECTIONS:
 # ═══════════════════════════════════════════════════════════════════
 fig.suptitle(
     'Big Data Landscape — 2026',
-    fontsize   = 27,
+    fontsize   = 45,
     fontweight = 'bold',
     y          = 0.99,
     color      = '#1A1A2E',
@@ -338,12 +325,12 @@ fig.suptitle(
 # 7.  Bubble-area note in upper-left
 # ═══════════════════════════════════════════════════════════════════
 ax.text(
-    0.005, 0.975,
+    0.04, 0.975,
     'Bubble area  ∝  log₁₀(data volume in PB)',
     transform = ax.transAxes,
     ha        = 'left',
     va        = 'top',
-    fontsize  = 13,
+    fontsize  = 20,
     color     = '#444444',
     bbox      = dict(
         boxstyle  = 'round,pad=0.42',
