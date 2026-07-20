@@ -41,26 +41,26 @@ DATA = [
 
     # ── STREAMING ──────────────────────────────────────────────────
     (
-        1.60, 54_750,
-        "Netflix\n~150 M hrs/day streaming\n(1 GB/hr)  →  ~55 k PB/y",
+        1.60, 190_895,
+        "Netflix\n~150 M hrs/day streaming\n(1 GB/hr)  →  ~190 k PB/y",
         '#E50914',
         1.20, 6.40,
     ),
     (
-        0.55, 10_300,
-        "Global E-mail\n~376 B e-mails/day  (75 KB)\n→  ~10.3 k PB/y",
+        0.55, 10_744,
+        "Global E-mail\n~393 B e-mails/day  (75 KB)\n→  ~10.75 k PB/y",
         '#8E44AD',
-        1.45, 3.80,
+        1.7, 3.80,
     ),
     (
-        1.10, 580,
-        "Spam\n~320 B messages/day  (5 KB)\n→  ~580 PB/y",
+        1.10, 4_900,
+        "Spam\n~180 B messages/day  (75 KB)\n→  ~4.9k PB/y",
         '#27AE60',
-        0.85, 1.80,          
+        0.85, 2.5,          
     ),
     (
-        2.45, 365,
-        "YouTube Uploads\n~1 M hrs/day  (1 GB/hr)\n→  ~365 PB/y",
+        2.45, 512,
+        "YouTube Uploads\n~ 720k hrs/day  (1.95 GB/hr)\n→  ~512 PB/y",
         '#CC0000',
         2.90, 1.50,          
     ),
@@ -343,23 +343,23 @@ ax.text(
 )
 
 # ═══════════════════════════════════════════════════════════════════
-# 8.  Footnote / data sources
+# 8.  Footnote / data sources- decided not to put, instead put in the caption
 # ═══════════════════════════════════════════════════════════════════
-ax.text(
-    0.01, 0.005,
-    "2026 estimates.  "
-    "Sources: Netflix Q1 2026 investor report · "
-    "Statista e-mail volume statistics (2024–26) · "
-    "AWS re:Invent 2025 projections · "
-    "LHC Grid (WLCG) resource pledges & data transfer statistics (CERN, 2024–2026) · "
-    "Rubin Obs. LSST DM plan · "
-    "SKA-Mid SDP specifications · "
-    "HL-LHC Computing TDR (CERN-LHCC-2020-015).",
-    transform = ax.transAxes,
-    fontsize  = 8.5,
-    color     = '#999999',
-    va        = 'bottom',
-)
+# ax.text(
+#     0.01, 0.005,
+#     "2026 estimates.  "
+#     "Sources: Netflix Q1 2026 investor report · "
+#     "Statista e-mail volume statistics (2024–26) · "
+#     "AWS re:Invent 2025 projections · "
+#     "LHC Grid (WLCG) resource pledges & data transfer statistics (CERN, 2024–2026) · "
+#     "Rubin Obs. LSST DM plan · "
+#     "SKA-Mid SDP specifications · "
+#     "HL-LHC Computing TDR (CERN-LHCC-2020-015).",
+#     transform = ax.transAxes,
+#     fontsize  = 8.5,
+#     color     = '#999999',
+#     va        = 'bottom',
+# )
 
 # ═══════════════════════════════════════════════════════════════════
 # 9.  Save & show
