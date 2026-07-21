@@ -44,19 +44,19 @@ K = 18   # bubble scale factor
 DATA = [
     # ── FPGA/ASIC region (latency < ~10 ms) ──────────────────────
     # name             lat     rate    PB/yr  colour     ann_x   ann_y   ha       va
-    ('LHC L1T',        4e-6,   2e12,   500,   '#2166AC', 1.8e-5, 6e11,  'left',  'top'),
-    ('DUNE',           5e-3,   3e10,    20,   '#FF7F0E', 2e-2,   1e10,  'left',  'top'),
-    ('Neuro',          1e-4,   5e7,    0.5,   '#7B3F00', 4e-5,   1.8e8, 'right', 'bottom'),
+    ('LHC L1T',        4e-6,   2e12,   200,   '#2166AC', 1e-6, 1e14,  'left',  'top'),
+    ('DUNE',           10e-6,   2e12,    30,   '#FF7F0E', 1e-4,   1e12,  'left',  'top'),
+#     ('Neuro',          1e-4,   5e7,    0.5,   '#7B3F00', 4e-5,   1.8e8, 'right', 'bottom'),
 
     # ── Boundary / CPU-GPU region ─────────────────────────────────
-    ('LHC HLT',        1e-1,   5e13,   300,   '#D62728', 1.8e-1, 2e13,  'left',  'top'),
-    ('SKA',            5e-1,   2e12,    30,   '#6A0572', 1.8,    8e12,  'left',  'bottom'),
-    ('Google Cloud',   2.0,    2e14,   1e6,   '#8C8C00', 6.0,    8e13,  'left',  'top'),
-    ('LIGO O4',        1.5,    1e8,     2,    '#E377C2', 4.5e-1, 4.5e7, 'right', 'top'),
-    ('Vera Rubin',     100,    4e8,     15,   '#9467BD', 300,    1.5e8, 'left',  'bottom'),
-    ('IceCube',        8,      5e7,    0.5,   '#2CA02C', 25,     2.2e7, 'left',  'top'),
+    ('LHC HLT',        200e-3,   2e12,   200,   '#D62728', 5e-4, 2e13,  'left',  'top'),
+    ('SKA',            1e0,   8e12,    700,   '#6A0572', 3e-1,    2e14,  'left',  'bottom'),
+    ('Google Cloud',   0.75,    8e8,   14e6,   '#8C8C00', 1e-4,    8e10,  'left',  'top'),
+    ('LIGO',        29.5,    80e6,     0.8,    '#E377C2', 1.5e3, 2e8, 'right', 'top'),
+    ('Vera Rubin',     60,    2.7e9,     3.65,   '#9467BD', 500,    3e9, 'left',  'bottom'),
+    ('IceCube',        30,      100e9,    0.130,   '#2CA02C', 200,     1e11, 'left',  'top'),
 #     ('ZTF',            50,     2e7,     1,    '#17BECF', 150,    7e7,   'left',  'bottom'),
-    ('Netflix 4K UHD', 200,    3.1e6,  0.1,   '#555555', 550,    1.3e6, 'left',  'top'),
+    ('Netflix', 200,    6e12,  190895,   '#555555', 5e3,    1.3e12, 'left',  'top'),
 ]
 
 # ═══════════════════════════════════════════════════════════════════
@@ -89,7 +89,7 @@ for name, lat, rate, pb, color, ax_, ay_, ha, va in DATA:
     # ── Label (plain text, no arrow — matches original A3D3 style) ──
     ax.text(ax_, ay_, name,
             ha=ha, va=va,
-            fontsize=11, fontweight='bold', color='black',
+            fontsize=20, fontweight='bold', color=color,
             zorder=10)
 
 # ═══════════════════════════════════════════════════════════════════
@@ -124,11 +124,11 @@ ax.set_yscale('log')
 ax.set_xlim(1e-8, 1e6)
 ax.set_ylim(5e5,  5e19)
 
-ax.set_xlabel('Latency Requirement [s]',   fontsize=20, labelpad=8)
-ax.set_ylabel('Streaming Data Rate [B/s]', fontsize=20, labelpad=8)
+ax.set_xlabel('Latency Requirement [s]',   fontsize=24, labelpad=8)
+ax.set_ylabel('Streaming Data Rate [B/s]', fontsize=24, labelpad=8)
 
 ax.tick_params(which='both', direction='in',
-               top=True, right=True, labelsize=16)
+               top=True, right=True, labelsize=20)
 ax.grid(True, which='major', ls='--', lw=0.5, color='gray', alpha=0.35)
 ax.grid(True, which='minor', ls=':',  lw=0.3, color='gray', alpha=0.20)
 
@@ -159,7 +159,7 @@ ax.text(2e3,    2e6,  'EASIER',
 # 7.  Title & attribution
 # ═══════════════════════════════════════════════════════════════════
 fig.suptitle('Streaming Data Rate vs. Latency Requirement — 2026',
-             fontsize=25, fontweight='bold', y=0.97, color='#1A1A2E')
+             fontsize=30, fontweight='bold', y=0.97, color='#1A1A2E')
 
 ax.text(0.2, 0.005,
         'Updated from A3D3 Institute (a3d3.ai)',
